@@ -15,5 +15,8 @@ class Deck
     cards.each do |card|
       if card.category == a_category
         category_cards.append(card)
+      end
+    end
     category_cards
   end
+end
