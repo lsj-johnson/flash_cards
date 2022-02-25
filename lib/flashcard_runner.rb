@@ -25,7 +25,10 @@ def start(round)
     card_num += 1
   end
   puts "-"*6 + " Game over! " + "-"*6
-  puts "You had #{round.number_correct} correct guesses out of #{round.deck.cards.count}."
+  puts "You had #{round.number_correct} correct guesses out of #{round.deck.cards.count} for a total score of #{round.percent_correct}%."
+  round.category_tallies.keys.each do |category|
+    puts "#{String(category)} - #{round.percent_correct_by_category(category)}% correct"
+  end
 end
 
 start(round)

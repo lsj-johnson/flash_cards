@@ -1,6 +1,6 @@
 
 class Round
-  attr_reader :deck, :turns
+  attr_reader :deck, :turns, :category_tallies
 
   def initialize(deck)
     @deck             = deck
