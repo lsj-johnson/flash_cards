@@ -2,59 +2,42 @@ require './lib/turn'
 require './lib/card'
 
 RSpec.describe Turn do
-  it 'exists' do
-    card = Card.new('What is the capital of Alaksa?', 'Juneau', :Geography)
-    turn = Turn.new('Juneau', card)
+  before  :each do
+    @card_1 = Card.new('What is the capital of Alaksa?', 'Juneau', :Geography)
+    @turn_1 = Turn.new('Juneau', @card_1)
+    @card_2 = Card.new('Which planet is closest to the sun?', 'Mercury', :STEM)
+    @turn_2 = Turn.new('Saturn', @card_2)
+  end
 
-    expect(turn).to be_instance_of(Turn)
+  it 'exists' do
+    expect(@turn_1).to be_a(Turn)
   end
 
   it 'has a guess' do
-    card = Card.new('What is the capital of Alaksa?', 'Juneau', :Geography)
-    turn = Turn.new('Juneau', card)
-
-    expect(turn.guess).to eq('Juneau')
+    expect(@turn_1.guess).to eq('Juneau')
   end
 
   it 'it is correct' do
-    card = Card.new('What is the capital of Alaksa?', 'Juneau', :Geography)
-    turn = Turn.new('Juneau', card)
-
-    expect(turn.correct?).to eq(true)
+    expect(@turn_1.correct?).to eq(true)
   end
 
   it 'provides proper feedback when correct' do
-    card = Card.new('What is the capital of Alaksa?', 'Juneau', :Geography)
-    turn = Turn.new('Juneau', card)
-
-    expect(turn.feedback).to eq('Correct!')
+    expect(@turn_1.feedback).to eq('Correct!')
   end
 
   it 'exists' do
-    card = Card.new('Which planet is closest to the sun?', 'Mercury', :STEM)
-    turn = Turn.new('Saturn', card)
-
-    expect(turn).to be_instance_of(Turn)
+    expect(@turn_2).to be_instance_of(Turn)
   end
 
   it 'has a guess' do
-    card = Card.new('Which planet is closest to the sun?', 'Mercury', :STEM)
-    turn = Turn.new('Saturn', card)
-
-    expect(turn.guess).to eq('Saturn')
+    expect(@turn_2.guess).to eq('Saturn')
   end
 
   it 'it is incorrect' do
-    card = Card.new('Which planet is closest to the sun?', 'Mercury', :STEM)
-    turn = Turn.new('Saturn', card)
-
-    expect(turn.correct?).to eq(false)
+    expect(@turn_2.correct?).to eq(false)
   end
 
   it 'displays proper feeback when incorrect' do
-    card = Card.new('Which planet is closest to the sun?', 'Mercury', :STEM)
-    turn = Turn.new('Saturn', card)
-
-    expect(turn.feedback).to eq('Incorrect.')
+    expect(@turn_2.feedback).to eq('Incorrect.')
   end
 end
